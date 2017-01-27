@@ -16,14 +16,7 @@
  */
 package org.jboss.aerogear.unifiedpush.message.sender;
 
-import com.notnoop.apns.APNS;
-import com.notnoop.apns.ApnsDelegateAdapter;
-import com.notnoop.apns.ApnsNotification;
-import com.notnoop.apns.ApnsService;
-import com.notnoop.apns.ApnsServiceBuilder;
-import com.notnoop.apns.DeliveryError;
-import com.notnoop.apns.EnhancedApnsNotification;
-import com.notnoop.apns.PayloadBuilder;
+import com.notnoop.apns.*;
 import com.notnoop.apns.internal.Utilities;
 import com.notnoop.exceptions.ApnsDeliveryErrorException;
 import org.jboss.aerogear.unifiedpush.api.Variant;
@@ -118,17 +111,17 @@ public class APNsPushNotificationSender implements PushNotificationSender {
         if(apns.getLocalizedTitleArguments() != null) {
             builder .localizedArguments(apns.getLocalizedTitleArguments()); //iOS8 : Localized Title Arguments;
         }
-		
+
         //this kind of check should belong in java-apns
         if(apns.getLocalizedKey() != null) {
             builder.localizedKey(apns.getLocalizedKey()); // Localized Key;
-        }		
+        }
 
         //this kind of check should belong in java-apns
         if(apns.getLocalizedArguments() != null) {
             builder.localizedArguments(apns.getLocalizedArguments()); // Localized Arguments;
-        }		
-		
+        }
+
        // apply the 'content-available:1' value:
         if (apns.isContentAvailable()) {
             // content-available is for 'silent' notifications and Newsstand
