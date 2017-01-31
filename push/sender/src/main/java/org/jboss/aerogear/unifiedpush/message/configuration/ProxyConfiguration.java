@@ -19,11 +19,9 @@ public class ProxyConfiguration {
     Authenticator.setDefault(new Authenticator() {
 
       @Override protected PasswordAuthentication getPasswordAuthentication() {
-        System.out.println("*** getPasswordAuthentication called ***");
         String proxyHost = System.getenv("HTTP_PROXY_HOST");
         String proxyUser = System.getenv("HTTP_PROXY_USER");
         String proxyPass = System.getenv("HTTP_PROXY_PASS");
-        System.out.println("*** getPasswordAuthentication called ***" + proxyHost + "," + proxyPass + "," +proxyUser);
         String hostAskingForAuth = this.getRequestingHost();
         if(hostAskingForAuth.equals(proxyHost)){
           return new PasswordAuthentication(proxyUser,proxyPass.toCharArray());
