@@ -4,7 +4,9 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import java.net.Authenticator;
+import java.net.InetSocketAddress;
 import java.net.PasswordAuthentication;
+import java.net.Proxy;
 
 @Startup
 @Singleton
@@ -28,5 +30,18 @@ public class ProxyConfiguration {
         return super.getPasswordAuthentication();
       }
     });
+  }
+
+  public static Proxy socks(){
+    String socksHost = System.getenv("SOCKS_PROXY_HOST");
+    String socksPort = System.getenv("SOCKS_PROXY_PORT");
+    int port = Integer.parseInt(socksPort);
+    return new Proxy(Proxy.Type.SOCKS,new InetSocketAddress(socksHost,port));
+  }
+
+  public static Boolean hasSocks(){
+    String socksHost = System.getenv("SOCKS_PROXY_HOST");
+    String socksPort = System.getenv("SOCKS_PROXY_PORT");
+    return ((null != socksPort && ! "".equals(socksPort)) && (null != socksHost && ! "".equals(socksHost)));
   }
 }
