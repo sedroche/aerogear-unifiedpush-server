@@ -35,7 +35,6 @@ import org.jboss.aerogear.unifiedpush.message.UnifiedPushMessage;
 import org.jboss.aerogear.unifiedpush.message.apns.APNs;
 import org.jboss.aerogear.unifiedpush.message.cache.AbstractServiceCache.ServiceConstructor;
 import org.jboss.aerogear.unifiedpush.message.cache.ApnsServiceCache;
-import org.jboss.aerogear.unifiedpush.message.configuration.ProxyConfiguration;
 import org.jboss.aerogear.unifiedpush.message.exception.PushNetworkUnreachableException;
 import org.jboss.aerogear.unifiedpush.message.exception.SenderResourceNotAvailableException;
 import org.jboss.aerogear.unifiedpush.service.ClientInstallationService;
